@@ -71,6 +71,15 @@ public class addQuestions extends AppCompatActivity {
         }
         else{
             Toast.makeText(this, "Question added!", Toast.LENGTH_SHORT).show();
+            questionETxt.setText("");
+            optionAETxt.setText("");
+            optionBETxt.setText("");
+            optionCETxt.setText("");
+            optionDETxt.setText("");
+            aRBtn.setChecked(false);
+            bRBtn.setChecked(false);
+            cRBtn.setChecked(false);
+            dRBtn.setChecked(false);
         }
     }
 
@@ -104,7 +113,6 @@ public class addQuestions extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        Log.i("info","F9");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_questions);
         aRBtn = (RadioButton) findViewById(R.id.aRBtn);
