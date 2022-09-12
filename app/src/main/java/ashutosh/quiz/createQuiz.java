@@ -10,15 +10,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class addQuiz extends AppCompatActivity {
+public class createQuiz extends AppCompatActivity {
 
     EditText quizNameETxt;
     database d;
 
     public void next(View view){
+        String name = quizNameETxt.getText().toString();
+        if(name.equals("")){
+            Toast.makeText(this, "Please write a name", Toast.LENGTH_SHORT).show();
+            return;
+        }
         SQLiteDatabase db = this.d.getWritableDatabase();
         ContentValues c = new ContentValues();
-        String name = quizNameETxt.getText().toString();
         Cursor cursor = d.getData("Select * from quizzes");
         c.put("id", cursor.getCount()+1);
         c.put("name", name);
@@ -37,7 +41,7 @@ public class addQuiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_quiz);
+        setContentView(R.layout.activity_create_quiz);
         quizNameETxt = findViewById(R.id.quizNameETxt);
         d = new database(this);
     }

@@ -17,7 +17,7 @@
             android:name=".deleteQuiz"
             android:exported="false" />
         <activity
-            android:name=".addQuiz"
+            android:name=".createQuiz"
             android:exported="false" />
         <activity
             android:name=".selectQuiz"

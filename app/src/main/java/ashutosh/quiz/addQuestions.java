@@ -59,7 +59,15 @@ public class addQuestions extends AppCompatActivity {
             otherOption2 = optionBETxt.getText().toString();
             otherOption3 = optionCETxt.getText().toString();
         }
+        else{
+            Toast.makeText(this, "Please select an answer!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        if(question.equals("") || answer.equals("") || otherOption1.equals("") || otherOption2.equals("") || otherOption3.equals("")){
+            Toast.makeText(this, "Please enter all the fields!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         c.put("answer", answer);
         c.put("otherOption1", otherOption1);
