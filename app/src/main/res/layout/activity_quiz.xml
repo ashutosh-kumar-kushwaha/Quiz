@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#6a5ae0"
     tools:context=".quiz">
 
     <android.support.v4.widget.NestedScrollView
@@ -25,16 +26,23 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/dp_10">
+                android:background="@drawable/whitebg"
+                android:padding="@dimen/dp_10"
+                app:layout_constraintBottom_toBottomOf='parent'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <TextView
                     android:id="@+id/questionTxtVw"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/dp_230"
                     android:layout_height="wrap_content"
-                    android:background="#FFEDED"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@drawable/transparent"
                     android:padding="@dimen/dp_10"
                     android:text="@string/question"
+                    android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="@dimen/sp_18"
                     android:textStyle="bold"
@@ -46,7 +54,8 @@
                     android:id="@+id/optionACons"
                     android:layout_width="@dimen/dp_250"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_40"
+                    android:layout_marginTop="@dimen/dp_25"
+                    android:background="@drawable/optionsbg"
                     android:onClick="checkA"
                     android:padding="@dimen/dp_5"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +66,7 @@
                         android:id="@+id/optionATxtVw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/transparent"
                         android:onClick="checkA"
                         android:padding="@dimen/dp_10"
                         android:text="@string/option_a"
@@ -71,12 +81,13 @@
                         android:id="@+id/aRBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/transparent"
+                        android:buttonTint="@color/black"
                         android:minWidth="48dp"
                         android:minHeight="48dp"
                         android:onClick="checkA"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/optionATxtVw"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </android.support.constraint.ConstraintLayout>
@@ -86,6 +97,7 @@
                     android:layout_width="@dimen/dp_250"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_25"
+                    android:background="@drawable/optionsbg"
                     android:onClick="checkB"
                     android:padding="@dimen/dp_5"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +108,7 @@
                         android:id="@+id/optionBTxtVw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/transparent"
                         android:onClick="checkB"
                         android:padding="@dimen/dp_10"
                         android:text="@string/option_b"
@@ -111,12 +124,13 @@
                         android:id="@+id/bRBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/transparent"
+                        android:buttonTint="@color/black"
                         android:minWidth="48dp"
                         android:minHeight="48dp"
                         android:onClick="checkB"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/optionBTxtVw"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </android.support.constraint.ConstraintLayout>
@@ -126,6 +140,7 @@
                     android:layout_width="@dimen/dp_250"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_25"
+                    android:background="@drawable/optionsbg"
                     android:onClick="checkC"
                     android:padding="@dimen/dp_5"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -136,6 +151,7 @@
                         android:id="@+id/optionCTxtVw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/transparent"
                         android:onClick="checkC"
                         android:padding="@dimen/dp_10"
                         android:text="@string/option_c"
@@ -151,12 +167,13 @@
                         android:id="@+id/cRBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/transparent"
+                        android:buttonTint="@color/black"
                         android:minWidth="48dp"
                         android:minHeight="48dp"
                         android:onClick="checkC"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/optionCTxtVw"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </android.support.constraint.ConstraintLayout>
@@ -166,6 +183,7 @@
                     android:layout_width="@dimen/dp_250"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_25"
+                    android:background="@drawable/optionsbg"
                     android:onClick="checkD"
                     android:padding="@dimen/dp_5"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -176,6 +194,7 @@
                         android:id="@+id/optionDTxtVw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/transparent"
                         android:onClick="checkD"
                         android:padding="@dimen/dp_10"
                         android:text="@string/option_d"
@@ -191,28 +210,54 @@
                         android:id="@+id/dRBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/transparent"
+                        android:buttonTint="@color/black"
                         android:minWidth="48dp"
                         android:minHeight="48dp"
                         android:onClick="checkD"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/optionDTxtVw"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </android.support.constraint.ConstraintLayout>
 
-                <Button
-                    android:id="@+id/submitBtn"
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_25"
-                    android:onClick="submit"
-                    android:padding="@dimen/dp_10"
-                    android:text="@string/submit"
-                    android:textSize="@dimen/sp_14"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/optionDCons" />
+                    app:layout_constraintTop_toBottomOf="@+id/optionDCons">
+
+                    <Button
+                        android:id="@+id/skipBtn"
+                        android:layout_width="@dimen/dp_80"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/submitbg"
+                        android:onClick="skip"
+                        android:padding="@dimen/dp_10"
+                        android:text="Skip"
+                        android:textSize="@dimen/sp_14"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/submitBtn"
+                        android:layout_width="@dimen/dp_80"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_marginStart="@dimen/dp_20"
+                        android:background="@drawable/submitbg"
+                        android:onClick="submit"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/submit"
+                        android:textSize="@dimen/sp_14"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/skipBtn"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
             </android.support.constraint.ConstraintLayout>
         </HorizontalScrollView>
     </android.support.v4.widget.NestedScrollView>

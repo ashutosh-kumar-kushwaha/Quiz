@@ -28,14 +28,22 @@ public class addQuestions extends Activity {
     database d;
     String name;
     ConstraintLayout optionACons, optionBCons, optionCCons, optionDCons;
+    Cursor cursor;
 
     public void submit(View view){
         String question = questionETxt.getText().toString();
         String answer ="", otherOption1="", otherOption2="", otherOption3="";
         SQLiteDatabase db = this.d.getWritableDatabase();
         ContentValues c = new ContentValues();
-        Cursor cursor = d.getData("Select * from questions");
-        c.put("id", cursor.getCount()+1);
+        cursor = d.getData("Select * from questions");
+        if(cursor.getCount()==0){
+            c.put("id", 1);
+        }
+        else{
+            cursor = d.getData("Select max(id) from questions");
+            cursor.moveToNext();
+            c.put("id", Integer.parseInt(cursor.getString(0))+1);
+        }
         c.put("quiz", name);
         c.put("question", question);
         if(aRBtn.isChecked()){
@@ -91,6 +99,10 @@ public class addQuestions extends Activity {
             bRBtn.setChecked(false);
             cRBtn.setChecked(false);
             dRBtn.setChecked(false);
+            optionACons.setBackgroundResource(R.drawable.optionsbg);
+            optionBCons.setBackgroundResource(R.drawable.optionsbg);
+            optionCCons.setBackgroundResource(R.drawable.optionsbg);
+            optionDCons.setBackgroundResource(R.drawable.optionsbg);
         }
     }
 

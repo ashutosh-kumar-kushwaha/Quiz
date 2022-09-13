@@ -1,5 +1,6 @@
 package ashutosh.quiz;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class deleteQuiz extends AppCompatActivity {
+public class deleteQuiz extends Activity {
 
     SQLiteDatabase db;
     database d;

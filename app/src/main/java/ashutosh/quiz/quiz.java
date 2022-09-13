@@ -46,6 +46,9 @@ public class quiz extends Activity {
     ConstraintLayout optionDCons;
     long startTime;
     long timeTaken;
+    Cursor cursor;
+    int[] questionIDs;
+    Random random = new Random();
 
 
 
@@ -55,18 +58,22 @@ public class quiz extends Activity {
         if(aRBtn.isChecked()){
             userChoice = 1;
             aRBtn.setChecked(false);
+            optionACons.setBackgroundResource(R.drawable.optionsbg);
         }
         else if(bRBtn.isChecked()){
             userChoice = 2;
             bRBtn.setChecked(false);
+            optionBCons.setBackgroundResource(R.drawable.optionsbg);
         }
         else if(cRBtn.isChecked()){
             userChoice = 3;
             cRBtn.setChecked(false);
+            optionCCons.setBackgroundResource(R.drawable.optionsbg);
         }
         else if(dRBtn.isChecked()){
             userChoice = 4;
             dRBtn.setChecked(false);
+            optionDCons.setBackgroundResource(R.drawable.optionsbg);
         }
         else{
             Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show();
@@ -80,6 +87,7 @@ public class quiz extends Activity {
         else{
             Toast.makeText(this, "Wrong Answer!", Toast.LENGTH_SHORT).show();
         }
+
         if(ques < totalQues){
             userChoice = 0;
             ans = generateQuestion();
@@ -108,10 +116,10 @@ public class quiz extends Activity {
         bRBtn.setChecked(false);
         cRBtn.setChecked(false);
         dRBtn.setChecked(false);
-        optionACons.setBackgroundColor(Color.parseColor("#6387f5"));
-        optionBCons.setBackgroundColor(0);
-        optionCCons.setBackgroundColor(0);
-        optionDCons.setBackgroundColor(0);
+        optionACons.setBackgroundResource(R.drawable.optionsbgselected);
+        optionBCons.setBackgroundResource(R.drawable.optionsbg);
+        optionCCons.setBackgroundResource(R.drawable.optionsbg);
+        optionDCons.setBackgroundResource(R.drawable.optionsbg);
     }
 
     public void checkB(View view){
@@ -119,10 +127,10 @@ public class quiz extends Activity {
         bRBtn.setChecked(true);
         cRBtn.setChecked(false);
         dRBtn.setChecked(false);
-        optionBCons.setBackgroundColor(Color.parseColor("#6387f5"));
-        optionACons.setBackgroundColor(0);
-        optionCCons.setBackgroundColor(0);
-        optionDCons.setBackgroundColor(0);
+        optionBCons.setBackgroundResource(R.drawable.optionsbgselected);
+        optionACons.setBackgroundResource(R.drawable.optionsbg);
+        optionCCons.setBackgroundResource(R.drawable.optionsbg);
+        optionDCons.setBackgroundResource(R.drawable.optionsbg);
     }
 
     public void checkC(View view){
@@ -130,10 +138,10 @@ public class quiz extends Activity {
         bRBtn.setChecked(false);
         cRBtn.setChecked(true);
         dRBtn.setChecked(false);
-        optionCCons.setBackgroundColor(Color.parseColor("#6387f5"));
-        optionBCons.setBackgroundColor(0);
-        optionACons.setBackgroundColor(0);
-        optionDCons.setBackgroundColor(0);
+        optionCCons.setBackgroundResource(R.drawable.optionsbgselected);
+        optionACons.setBackgroundResource(R.drawable.optionsbg);
+        optionBCons.setBackgroundResource(R.drawable.optionsbg);
+        optionDCons.setBackgroundResource(R.drawable.optionsbg);
     }
 
     public void checkD(View view){
@@ -141,26 +149,44 @@ public class quiz extends Activity {
         bRBtn.setChecked(false);
         cRBtn.setChecked(false);
         dRBtn.setChecked(true);
-        optionDCons.setBackgroundColor(Color.parseColor("#6387f5"));
-        optionBCons.setBackgroundColor(0);
-        optionCCons.setBackgroundColor(0);
-        optionACons.setBackgroundColor(0);
+        optionDCons.setBackgroundResource(R.drawable.optionsbgselected);
+        optionBCons.setBackgroundResource(R.drawable.optionsbg);
+        optionCCons.setBackgroundResource(R.drawable.optionsbg);
+        optionACons.setBackgroundResource(R.drawable.optionsbg);
+    }
+
+    public void skip(View view){
+        if(ques < totalQues){
+            userChoice = 0;
+            ans = generateQuestion();
+            ques++;
+        }
+        else{
+            timeTaken = System.currentTimeMillis() - startTime;
+            String passedStatus;
+            if((float)score/(float)totalQues > 0.33f){
+                passedStatus = "Passed!";
+            }
+            else{
+                passedStatus = "Failed!";
+            }
+            new AlertDialog.Builder(this).setTitle("Quiz Over!").setMessage("Your Score : "+Integer.toString(score)+ "/"+ Integer.toString(totalQues) + "\n\nTime Taken : " + Long.toString(timeTaken/1000) + " seconds\n\n" + passedStatus).setNeutralButton("Exit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    quiz.this.finish();
+                }
+            }).setIcon(android.R.drawable.ic_dialog_info).show();
+        }
+        optionACons.setBackgroundResource(R.drawable.optionsbg);
+        optionBCons.setBackgroundResource(R.drawable.optionsbg);
+        optionCCons.setBackgroundResource(R.drawable.optionsbg);
+        optionDCons.setBackgroundResource(R.drawable.optionsbg);
     }
 
     public int generateQuestion(){
-
-        Cursor cursor = d.getData("Select * from questions where quiz='"+quiz+"'");
-        if(cursor.getCount()==0){
-            Toast.makeText(this, "There isn't any question in this quiz. Please delete the quiz and create it again with some questions.", Toast.LENGTH_SHORT).show();
-            quiz.this.finish();
-            return -1;
-        }
-        totalQues = cursor.getCount();
-        cursor.moveToNext();
-        Random random = new Random();
         int questionId;
         do{
-            questionId = random.nextInt(cursor.getCount()) + 1;
+            questionId = questionIDs[random.nextInt(totalQues)];
         }while(mp.containsKey(questionId));
         mp.put(questionId, true);
         cursor = d.getData("Select * from questions where id="+Integer.toString(questionId));
@@ -211,7 +237,20 @@ public class quiz extends Activity {
         db = d.getReadableDatabase();
         Intent intent =  getIntent();
         quiz = intent.getExtras().getString("name");
-        questionTxtVw = (TextView) findViewById(R.id.questionTxtVw);
+        cursor = d.getData("Select * from questions where quiz='"+quiz+"'");
+        if(cursor.getCount()==0){
+            Toast.makeText(this, "There isn't any question in this quiz. Please delete the quiz and create it again with some questions.", Toast.LENGTH_SHORT).show();
+            quiz.this.finish();
+        }
+        totalQues = cursor.getCount();
+        questionIDs = new int[totalQues];
+        int i=0;
+        while(cursor.moveToNext()){
+            questionIDs[i++] = Integer.parseInt(cursor.getString(0));
+        }
+
+
+        questionTxtVw = findViewById(R.id.questionTxtVw);
         optionATxtVw = findViewById(R.id.optionATxtVw);
         optionBTxtVw = findViewById(R.id.optionBTxtVw);
         optionCTxtVw = findViewById(R.id.optionCTxtVw);

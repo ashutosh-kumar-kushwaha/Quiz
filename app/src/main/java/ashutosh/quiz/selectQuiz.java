@@ -1,5 +1,6 @@
 package ashutosh.quiz;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class selectQuiz extends AppCompatActivity {
+public class selectQuiz extends Activity {
 
     EditText nameETxt;
     database d;
@@ -20,8 +21,6 @@ public class selectQuiz extends AppCompatActivity {
 
     public void startQuiz(View view){
         String name = nameETxt.getText().toString();
-        SQLiteDatabase db = this.d.getReadableDatabase();
-        ContentValues c = new ContentValues();
         cursor = d.getData("Select * from quizzes where name='"+name+"'");
         if(cursor.getCount()==0){
             Toast.makeText(this, "There isn't any quiz with this name!", Toast.LENGTH_SHORT).show();
@@ -30,6 +29,23 @@ public class selectQuiz extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), quiz.class);
         intent.putExtra("name", nameETxt.getText().toString());
         startActivity(intent);
+    }
+
+    public void showAllQuizzes(View view){
+        cursor = d.getData("Select * from quizzes");
+        StringBuilder sb = new StringBuilder();
+        if(cursor.getCount()==0){
+            sb.append("No quiz found!");
+        }
+        else{
+            sb.append("\n");
+            while(cursor.moveToNext()){
+                sb.append(cursor.getString(1));
+                sb.append("\n");
+            }
+        }
+        new AlertDialog.Builder(this).setTitle("Quizzes").setMessage(sb.toString()).show();
+
     }
 
     @Override
