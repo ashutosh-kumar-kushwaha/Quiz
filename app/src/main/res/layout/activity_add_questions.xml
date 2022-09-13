@@ -4,131 +4,222 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blackbg"
     tools:context=".addQuestions">
 
-    <EditText
-        android:id="@+id/questionETxt"
-        android:layout_width="@dimen/dp_270"
-        android:layout_height="@dimen/sp_100"
-        android:layout_marginTop="@dimen/dp_60"
-        android:background="#FFE8E8"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Question"
-        android:inputType="textMultiLine"
-        android:textAlignment="center"
-        android:textSize="@dimen/sp_14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v4.widget.NestedScrollView
 
-    <EditText
-        android:id="@+id/optionAETxt"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_40"
-        android:layout_marginTop="@dimen/dp_20"
-        android:ems="10"
-        android:hint="Option A"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionETxt" />
-
-    <EditText
-        android:id="@+id/optionBETxt"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_40"
-        android:layout_marginTop="@dimen/dp_20"
-        android:ems="10"
-        android:hint="Option B"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionAETxt" />
-
-    <EditText
-        android:id="@+id/optionCETxt"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_40"
-        android:layout_marginTop="@dimen/dp_20"
-        android:ems="10"
-        android:hint="Option C"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionBETxt" />
-
-    <EditText
-        android:id="@+id/optionDETxt"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_40"
-        android:layout_marginTop="@dimen/dp_20"
-        android:ems="10"
-        android:hint="Option D"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionCETxt" />
-
-
-    <Button
-        android:id="@+id/submitQuesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="submit"
-        android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionDETxt" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/whitebg"
+                android:padding="@dimen/dp_14">
 
 
-    <RadioButton
-        android:id="@+id/aRBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:onClick="checkA"
-        app:layout_constraintBottom_toBottomOf="@+id/optionAETxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/optionAETxt"
-        app:layout_constraintTop_toTopOf="@+id/optionAETxt" />
+                <EditText
+                    android:id="@+id/questionETxt"
+                    android:layout_width="@dimen/dp_260"
+                    android:layout_height="@dimen/sp_100"
+                    android:background="@drawable/questionbg"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Question"
+                    android:inputType="textMultiLine"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/sp_14"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/bRBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:onClick="checkB"
-        app:layout_constraintBottom_toBottomOf="@+id/optionBETxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/optionBETxt"
-        app:layout_constraintTop_toTopOf="@+id/optionBETxt" />
 
-    <RadioButton
-        android:id="@+id/cRBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:onClick="checkC"
-        app:layout_constraintBottom_toBottomOf="@+id/optionCETxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/optionCETxt"
-        app:layout_constraintTop_toTopOf="@+id/optionCETxt" />
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/optionACons"
+                    android:layout_width="@dimen/dp_250"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:background="@drawable/optionsbg"
+                    android:onClick="checkA"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/questionETxt">
 
-    <RadioButton
-        android:id="@+id/dRBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:onClick="checkD"
-        app:layout_constraintBottom_toBottomOf="@+id/optionDETxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/optionDETxt"
-        app:layout_constraintTop_toTopOf="@+id/optionDETxt" />
+                    <EditText
+                        android:id="@+id/optionAETxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/transparent"
+                        android:ems="10"
+                        android:hint="Option A"
+                        android:inputType="textPersonName"
+                        android:onClick="checkA"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/aRBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        android:onClick="checkA"
+                        android:buttonTint="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/optionAETxt"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/optionBCons"
+                    android:layout_width="@dimen/dp_250"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:background="@drawable/optionsbg"
+                    android:onClick="checkB"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/optionACons">
+
+                    <EditText
+                        android:id="@+id/optionBETxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/transparent"
+                        android:ems="10"
+                        android:hint="Option B"
+                        android:inputType="textPersonName"
+                        android:onClick="checkB"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/bRBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        android:onClick="checkB"
+                        android:buttonTint="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/optionBETxt"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/optionCCons"
+                    android:layout_width="@dimen/dp_250"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:background="@drawable/optionsbg"
+                    android:onClick="checkC"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/optionBCons">
+
+                    <EditText
+                        android:id="@+id/optionCETxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/transparent"
+                        android:ems="10"
+                        android:hint="Option C"
+                        android:inputType="textPersonName"
+                        android:onClick="checkC"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/cRBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        android:onClick="checkC"
+                        android:buttonTint="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/optionCETxt"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/optionDCons"
+                    android:layout_width="@dimen/dp_250"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:background="@drawable/optionsbg"
+                    android:onClick="checkD"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/optionCCons">
+
+                    <EditText
+                        android:id="@+id/optionDETxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/transparent"
+                        android:ems="10"
+                        android:hint="Option D"
+                        android:inputType="textPersonName"
+                        android:onClick="checkD"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/dRBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        android:onClick="checkD"
+                        android:buttonTint="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/optionDETxt"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+
+                <Button
+                    android:id="@+id/submitQuesBtn"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:background="@drawable/submitbg"
+                    android:onClick="submit"
+                    android:text="Submit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/optionDCons" />
+
+            </android.support.constraint.ConstraintLayout>
+        </HorizontalScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.constraint.ConstraintLayout>

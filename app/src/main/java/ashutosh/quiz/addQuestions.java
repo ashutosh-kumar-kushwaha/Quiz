@@ -1,9 +1,11 @@
 package ashutosh.quiz;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +14,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class addQuestions extends AppCompatActivity {
+public class addQuestions extends Activity {
 
     RadioButton aRBtn;
     RadioButton bRBtn;
@@ -25,6 +27,7 @@ public class addQuestions extends AppCompatActivity {
     EditText optionDETxt;
     database d;
     String name;
+    ConstraintLayout optionACons, optionBCons, optionCCons, optionDCons;
 
     public void submit(View view){
         String question = questionETxt.getText().toString();
@@ -96,6 +99,10 @@ public class addQuestions extends AppCompatActivity {
         bRBtn.setChecked(false);
         cRBtn.setChecked(false);
         dRBtn.setChecked(false);
+        optionACons.setBackgroundResource(R.drawable.optionsbgselected);
+        optionBCons.setBackgroundResource(R.drawable.optionsbg);
+        optionCCons.setBackgroundResource(R.drawable.optionsbg);
+        optionDCons.setBackgroundResource(R.drawable.optionsbg);
     }
 
     public void checkB(View view){
@@ -103,6 +110,10 @@ public class addQuestions extends AppCompatActivity {
         bRBtn.setChecked(true);
         cRBtn.setChecked(false);
         dRBtn.setChecked(false);
+        optionBCons.setBackgroundResource(R.drawable.optionsbgselected);
+        optionACons.setBackgroundResource(R.drawable.optionsbg);
+        optionCCons.setBackgroundResource(R.drawable.optionsbg);
+        optionDCons.setBackgroundResource(R.drawable.optionsbg);
     }
 
     public void checkC(View view){
@@ -110,6 +121,10 @@ public class addQuestions extends AppCompatActivity {
         bRBtn.setChecked(false);
         cRBtn.setChecked(true);
         dRBtn.setChecked(false);
+        optionCCons.setBackgroundResource(R.drawable.optionsbgselected);
+        optionACons.setBackgroundResource(R.drawable.optionsbg);
+        optionBCons.setBackgroundResource(R.drawable.optionsbg);
+        optionDCons.setBackgroundResource(R.drawable.optionsbg);
     }
 
     public void checkD(View view){
@@ -117,6 +132,10 @@ public class addQuestions extends AppCompatActivity {
         bRBtn.setChecked(false);
         cRBtn.setChecked(false);
         dRBtn.setChecked(true);
+        optionDCons.setBackgroundResource(R.drawable.optionsbgselected);
+        optionBCons.setBackgroundResource(R.drawable.optionsbg);
+        optionCCons.setBackgroundResource(R.drawable.optionsbg);
+        optionACons.setBackgroundResource(R.drawable.optionsbg);
     }
 
     @Override
@@ -135,5 +154,10 @@ public class addQuestions extends AppCompatActivity {
         d = new database(this);
         Intent intent = getIntent();
         name = intent.getExtras().getString("name");
+        optionACons = findViewById(R.id.optionACons);
+        optionBCons = findViewById(R.id.optionBCons);
+        optionCCons = findViewById(R.id.optionCCons);
+        optionDCons = findViewById(R.id.optionDCons);
+
     }
 }
